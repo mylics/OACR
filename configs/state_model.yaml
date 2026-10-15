@@ -1,0 +1,36 @@
+seed: 42
+buffered_rollouts_file: data/buffered_rollouts/rollouts.jsonl
+rollout_buffer_capacity: 8192
+question_state_file: data/processed/state_model/question_states.jsonl
+temporal_ordering_file: data/processed/state_model/temporal_ordering_pairs.jsonl
+output_dir: checkpoints/kg_state_outcome_model
+
+encoder_model: BAAI/bge-large-en-v1.5
+max_length: 512
+dropout: 0.1
+batch_size: 768
+micro_batch_size: 16
+learning_rate: 2.0e-5
+weight_decay: 0.01
+epochs: 16
+max_grad_norm: 1.0
+bf16: true
+
+temporal_ordering_strength: 0.5
+
+outcome_reward_mixing_coefficient: 0.5
+
+collector:
+  question_file: data/processed/rl/train.jsonl
+  policy_model: checkpoints/oacr_grpo/epoch_1
+  kg_service_url: http://127.0.0.1:8011
+  kg_request_timeout: 60
+  rollouts_per_question: 4
+  max_turns: 6
+  max_new_tokens_per_turn: 512
+  max_prompt_length: 2048
+  max_response_length: 4096
+  temperature: 1.0
+  top_p: 1.0
+  bf16: true
+  device: cuda

@@ -1,0 +1,14 @@
+seed: 42
+model: checkpoints/oacr_rl/epoch_1
+question_file: data/processed/rl/test.jsonl
+output_file: results/predictions.jsonl
+kg_service_url: http://127.0.0.1:8011
+kg_request_timeout: 60
+max_turns: 6
+max_new_tokens_per_turn: 512
+max_prompt_length: 2048
+max_response_length: 4096
+temperature: 1.0
+top_p: 1.0
+outcome_reward_mixing_coefficient: 0.5
+bf16: true

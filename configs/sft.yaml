@@ -1,0 +1,23 @@
+seed: 42
+question_file: data/processed/rl/train.jsonl
+gold_path_file: data/raw/gold_paths.jsonl
+train_file: data/processed/sft/train.jsonl
+validation_file: data/processed/sft/validation.jsonl
+output_dir: checkpoints/oacr_sft
+
+kg_service_url: http://127.0.0.1:8011
+kg_request_timeout: 60
+validation_ratio: 0.02
+max_path_hops: 4
+
+model: Qwen/Qwen2.5-3B-Instruct
+max_length: 8192
+train_batch_size_per_device: 1
+global_batch_size: 32
+learning_rate: 5.0e-6
+weight_decay: 0.01
+epochs: 3
+warmup_ratio: 0.03
+max_grad_norm: 1.0
+gradient_checkpointing: true
+bf16: true

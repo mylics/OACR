@@ -1,0 +1,18 @@
+sparql_url: http://127.0.0.1:8890/sparql
+
+default_graph: null
+
+sparql_username_env: OACR_SPARQL_USERNAME
+sparql_password_env: OACR_SPARQL_PASSWORD
+sparql_bearer_token_env: OACR_SPARQL_TOKEN
+
+sparql_request_timeout: 30
+relation_limit: 1000
+entity_fetch_limit: 300
+cvt_expand_limit: 300
+
+top_k: 0
+per_relation_limit: 0
+
+host: 127.0.0.1
+port: 8011

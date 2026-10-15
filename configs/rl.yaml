@@ -1,0 +1,52 @@
+seed: 42
+question_file: data/processed/rl/train.jsonl
+sft_policy_model: checkpoints/oacr_sft
+reference_policy_model: checkpoints/oacr_sft
+kg_state_outcome_model: checkpoints/kg_state_outcome_model
+output_dir: checkpoints/oacr_rl
+
+kg_service_url: http://127.0.0.1:8011
+kg_request_timeout: 60
+max_turns: 6
+max_new_tokens_per_turn: 512
+max_length: 8192
+
+train_batch_size: 32
+mini_batch_size: 16
+micro_batch_size: 1
+rollout_group_size: 4
+max_prompt_length: 2048
+max_response_length: 4096
+temperature: 1.0
+top_p: 1.0
+
+outcome_reward_mixing_coefficient: 0.5
+
+advantage_epsilon: 1.0e-6
+
+policy_clip_epsilon: 0.2
+
+outcome_reward_change_bound: 0.5
+
+invalid_operation_credit: 0.2
+
+reallocation_strength: 0.3
+
+kl_penalty_coefficient: 0.002
+
+state_model_device: auto
+state_model_batch_size: 64
+state_model_max_length: 512
+state_model_config: configs/state_model.yaml
+buffered_rollouts_file: data/buffered_rollouts/rollouts.jsonl
+rollout_buffer_capacity: 8192
+state_model_refresh_interval: 10
+state_model_refresh_epochs: 1
+credit_reallocation: true
+
+learning_rate: 1.0e-6
+weight_decay: 0.01
+updates_per_rollout_group: 1
+epochs: 1
+max_grad_norm: 1.0
+bf16: true
